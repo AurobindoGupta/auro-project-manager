@@ -1,16 +1,16 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const SighnedInLinks = () =>{
+const SideNav = () =>{
 
     return(
-       <ul className="right">
+       <ul className="center">
            <li><NavLink to ='/create'>New Project</NavLink></li>
            <li><NavLink to ='/'>Log Out</NavLink></li>
             {/* materializecss in classname*/}
-           <li><NavLink to ='/' className='btn btn-floating pink lighten-1 waves-effect waves-light'>AG</NavLink> </li>
+           <li><NavLink to ='/' className='btn pink lighten-1 waves-effect waves-light'>AG</NavLink> </li>
        </ul>
     )
 }
 
-export default SighnedInLinks;
+export default SideNav;

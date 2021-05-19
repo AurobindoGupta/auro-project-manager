@@ -5,12 +5,8 @@ const SighnedOutLinks = () =>{
 
     return(
        <ul className="right">
-           <li>
-            <NavLink to ='/'>Sighn Up</NavLink>
-           </li>
-           <li>
-            <NavLink to ='/'>Login</NavLink>
-           </li>
+           <li><NavLink to ='/signup'>Sighn Up</NavLink> </li>
+           <li> <NavLink to ='/signin'>Login</NavLink> </li>
             
            
        </ul>

@@ -37,7 +37,7 @@ const SighnIn = () => {
                     <input type="password" id="password" onChange={handleChange} ></input>
                 </div>
                 <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-0">Login</button>
+                    <button className="btn btn-large pink lighten-1 z-depth-1 waves-effect waves-light">Login</button>
                 </div>
             </form>            
         </div>

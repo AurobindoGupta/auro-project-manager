@@ -57,7 +57,7 @@ const SighnUp = () => {
                     <input type="text" id="lastName" onChange={handleChange} ></input>
                 </div>
                 <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-0">SIGN UP</button>
+                    <button className="btn btn-large pink lighten-1 z-depth-1 waves-effect waves-light">SIGN UP</button>
                 </div>
             </form>            
         </div>

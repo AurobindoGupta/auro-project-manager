@@ -20,7 +20,7 @@ function App() {
           <Route path='/create' component={CreateProject} />
         </Switch>
       </div>
-    </BrowserRouter>
+          </BrowserRouter>
   );
 }
 
