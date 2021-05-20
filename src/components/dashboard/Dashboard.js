@@ -25,10 +25,16 @@ function Dashboard(props) {
 }
 
 const mapStateToProps =(state) =>{
+    console.log(state);
     return{
-        projects: state.project.projects
+        projects: state.firestore.ordered.projects
     }
 }
 
 
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'projects' } //trigers firestoreReducer to update the change tp a single collection
+    ])
+)(Dashboard);
