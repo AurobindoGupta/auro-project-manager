@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 function Dashboard(props) {
     console.log(props)
@@ -29,4 +31,4 @@ const mapStateToProps =(state) =>{
 }
 
 
-export default connect(mapStateToProps) (Dashboard);
+export default connect(mapStateToProps)(Dashboard);
