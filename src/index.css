@@ -43,7 +43,9 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 }
 .sidenav{
   width: 150px;
+ 
 }
-.sidenav ul{
-  text-align: center;
+
+button:hover{
+    opacity: 0.8;
 }
