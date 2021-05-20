@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { createProject } from '../../store/actions/projectActions';
 
  
 
-const CreateProject = () => {
+const CreateProject = (props) => {
 
     const[state,setState]= useState({
         title: '',
@@ -19,6 +21,7 @@ const CreateProject = () => {
      const handleSubmit = (e) =>{
          e.preventDefault();
         console.log(state);
+        props.createProject(state);
     }
     
     return (
@@ -41,4 +44,11 @@ const CreateProject = () => {
         </div>
     )
 }
-export default CreateProject;
+//redux
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        createProject: (project) => dispatch(createProject(project))
+    }
+}
+
+export default connect(null, mapDispatchToProps) (CreateProject);
