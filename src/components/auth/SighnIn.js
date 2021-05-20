@@ -2,10 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import {connect} from 'react-redux';
 import {signIn} from '../../store/actions/authActions';
+import { Redirect } from 'react-router-dom';
 
  
 
 const SighnIn = (props) => {
+    const { authError, auth } = props; 
+   
 
     const[state,setState]= useState({
         email: '',
@@ -23,7 +26,10 @@ const SighnIn = (props) => {
          e.preventDefault();
         props.signIn(state)
     }
-    const {authError} = props; 
+
+   
+    if(auth.uid) return <Redirect to= '/'/>
+
     return (
         <div className="container">
 
@@ -52,7 +58,8 @@ const SighnIn = (props) => {
 
 const mapStateToProps = (state) =>{
    return { 
-       authError: state.auth.authError
+       authError: state.auth.authError,
+       auth: state.firebase.auth
     }
 }
 

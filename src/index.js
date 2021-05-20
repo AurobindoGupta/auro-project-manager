@@ -10,6 +10,8 @@ import thunk from 'redux-thunk';
 import { createFirestoreInstance } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import fbConfig from './config/fbConfig';
+import { useSelector  } from 'react-redux'
+import { isLoaded  } from 'react-redux-firebase';
 
 
 const store = createStore( rootReducer,
@@ -18,8 +20,17 @@ const store = createStore( rootReducer,
         
     )
   );
+
+  function AuthIsLoaded({children}){ //use for the glitch where the unauthorised page is loaded for a few secs before redirecting
+    const auth = useSelector(state => state.firebase.auth)
+
+    if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+
+        return children
+
+  }
 ReactDOM.render(
-  <React.StrictMode>
+
     <Provider store= {store} >
       <ReactReduxFirebaseProvider 
       // used this to bind data to firebase
@@ -27,12 +38,11 @@ ReactDOM.render(
       config={{ }}
       dispatch= {store.dispatch}
       createFirestoreInstance={createFirestoreInstance}>
-
+        <AuthIsLoaded>
         <App />
-
+        </AuthIsLoaded>
       </ReactReduxFirebaseProvider>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
   
 );
