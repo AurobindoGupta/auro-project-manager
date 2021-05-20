@@ -1,28 +1,29 @@
 import React from 'react'
 import { useState } from 'react';
+import {connect} from 'react-redux';
+import {signIn} from '../../store/actions/authActions';
 
  
 
-const SighnIn = () => {
+const SighnIn = (props) => {
 
-    const[email,setEmail]= useState('');
-    const [password, setPassword] = useState(''); 
+    const[state,setState]= useState({
+        email: '',
+        password: ''
+    });
+     
     
     const handleChange = (e) =>{
        
-       if(e.target.id === 'email'){
-           setEmail(e.target.value);
-       }
-       else{
-           setPassword(e.target.value);
-       }
+       setState({...state,[e.target.id]:e.target.value});
+       
     }
     
      const handleSubmit = (e) =>{
          e.preventDefault();
-        console.log(email,password);
+        props.signIn(state)
     }
-    
+    const {authError} = props; 
     return (
         <div className="container">
 
@@ -38,9 +39,27 @@ const SighnIn = () => {
                 </div>
                 <div className="input-field">
                     <button className="btn btn-large pink lighten-1 z-depth-1 waves-effect waves-light">Login</button>
+                    <div className = "red-text center">
+                        {authError ? <p>{authError}</p> : null }
+                    </div>
                 </div>
-            </form>            
+                
+            </form> 
+            <h6 className="white-text">email: test@testuser.com ; password: test1234</h6>      
         </div>
     )
 }
-export default SighnIn;
+
+const mapStateToProps = (state) =>{
+   return { 
+       authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        signIn: (creds) => dispatch(signIn(creds))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SighnIn);

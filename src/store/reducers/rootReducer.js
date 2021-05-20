@@ -2,11 +2,13 @@ import authReducer from './authReducer';
 import projectReducer from './projectReducer';
 import {combineReducers} from 'redux';
 import { firestoreReducer } from 'redux-firestore'; //sync our data in background from firestore to state
+import { firebaseReducer } from 'react-redux-firebase';//sync suthentication to our state(with our redux)
 
 const rootReducer = combineReducers({
     auth: authReducer,
     project: projectReducer,
-    firestore: firestoreReducer
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
 });
 
 export default rootReducer;

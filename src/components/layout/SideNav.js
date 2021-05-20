@@ -1,16 +1,26 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import SighnedInLinks from './SighnedInLinks';
+import SighnedIOutLinks from './SighnedOutLinks';
+import { connect } from 'react-redux'; 
 
-const SideNav = () =>{
+const SideNav = (props) =>{
+    const { auth } = props;
 
+    const links = auth.uid ? <SighnedInLinks/> : <SighnedIOutLinks/>
     return(
        <ul className="center">
-           <li><NavLink to ='/create'>New Project</NavLink></li>
-           <li><NavLink to ='/'>Log Out</NavLink></li>
-            {/* materializecss in classname*/}
-           <li><NavLink to ='/' className='btn pink lighten-1 z-depth-3 waves-effect waves-light'>AG</NavLink> </li>
+           <li>{links}</li>
        </ul>
     )
 }
 
-export default SideNav;
+const mapStateToProps = (state) =>{
+    console.log(state);
+    return{
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(SideNav);

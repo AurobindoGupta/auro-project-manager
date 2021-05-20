@@ -3,12 +3,16 @@ import {Link} from 'react-router-dom';
 import SideNav from './SideNav';
 import SighnedInLinks from './SighnedInLinks';
 import SighnedIOutLinks from './SighnedOutLinks';
+import { connect } from 'react-redux'; 
 
-const Navbar = () =>{
-    
+const Navbar = (props) =>{
+    const { auth } = props;
+
+    const links = auth.uid ? <SighnedInLinks/> : <SighnedIOutLinks/>
+
     return( // materializecss 
         <>
-       <nav className="nav-wrapper deep-purple "> 
+         <nav className="nav-wrapper deep-purple "> 
             <div className="container">
             
                 <Link to='/' className="brand-logo">ProjectManager</Link>
@@ -16,8 +20,9 @@ const Navbar = () =>{
                     <Link to='#' data-target="mobile-demo" className="sidenav-trigger show-on-small" ><i className="material-icons">menu</i></Link>
                     <ul className="right hide-on-med-and-down">
                     
-                    <li><SighnedIOutLinks /></li>
-                    <li><SighnedInLinks /></li>
+                    <li>{auth.isLoaded && links}</li> 
+                    {/* getiing a flicker of logout links if not using .isLoaded */}
+                    
                     </ul>
                 
             </div>
@@ -28,9 +33,16 @@ const Navbar = () =>{
                 
             
             </ul>
+       
         </>
-        
     )
 }
 
-export default Navbar;
+const mapStateToProps = (state) =>{
+    console.log(state);
+    return{
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);
