@@ -51,7 +51,10 @@ const SighnIn = (props) => {
                 </div>
                 
             </form> 
-            <h6 className="white-text">email: test@testuser.com ; password: test1234</h6>      
+            <h5 className="white-text">Test Credentials:</h5>
+            <h6 className="white-text">email: test@testuser.com ; password: test1234</h6>
+            <h6 className="white-text">email: alpha@testuser.com ; password: test1234</h6> 
+            <h6 className="white-text">email: beta@testuser.com ; password: test1234</h6>     
         </div>
     )
 }

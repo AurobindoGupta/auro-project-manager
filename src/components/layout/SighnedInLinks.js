@@ -4,13 +4,15 @@ import {connect} from 'react-redux';
 import { signOut } from '../../store/actions/authActions';
 
 const SighnedInLinks = (props) =>{
-    
+    console.log("check",props)
     return(
        <ul className="right">
            <li><NavLink to ='/create'>New Project</NavLink></li>
            <li><a onClick={props.signOut}>Log Out</a></li>
             {/* materializecss in classname*/}
-           <li><NavLink to ='/' className='btn btn-floating pink lighten-1 waves-effect waves-light'>AG</NavLink> </li>
+           <li><NavLink to ='/' className='btn btn-floating pink lighten-1 waves-effect waves-light'>
+               {props.profile}
+           </NavLink> </li>
        </ul>
     )
 }

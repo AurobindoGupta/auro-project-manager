@@ -7,8 +7,7 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 
 function Dashboard(props) {
-    console.log(props)
-
+    
     const { projects, auth } = props;
 
     if(!auth.uid) return <Redirect to='/signin' />
@@ -28,7 +27,7 @@ function Dashboard(props) {
 }
 
 const mapStateToProps =(state) =>{
-    console.log(state);
+    
     return{
         projects: state.firestore.ordered.projects,
         auth: state.firebase.auth 

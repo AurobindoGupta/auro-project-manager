@@ -20,6 +20,18 @@ const store = createStore( rootReducer,
         
     )
   );
+  const profileSpecificProps = {
+    userProfile: 'users',
+    useFirestoreForProfile: true,
+    enableRedirectHandling: false,
+    resetBeforeLogin: false
+  }
+  const rProps = {
+    firebase: fbConfig,
+     config: profileSpecificProps,
+    dispatch: store.dispatch,
+    createFirestoreInstance
+  };
 
   function AuthIsLoaded({children}){ //use for the glitch where the unauthorised page is loaded for a few secs before redirecting
     const auth = useSelector(state => state.firebase.auth)
@@ -34,10 +46,7 @@ ReactDOM.render(
     <Provider store= {store} >
       <ReactReduxFirebaseProvider 
       // used this to bind data to firebase
-      firebase={fbConfig}
-      config={{ }}
-      dispatch= {store.dispatch}
-      createFirestoreInstance={createFirestoreInstance}>
+      {...rProps}>
         <AuthIsLoaded>
         <App />
         </AuthIsLoaded>

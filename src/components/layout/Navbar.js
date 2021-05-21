@@ -6,9 +6,9 @@ import SighnedIOutLinks from './SighnedOutLinks';
 import { connect } from 'react-redux'; 
 
 const Navbar = (props) =>{
-    const { auth } = props;
-
-    const links = auth.uid ? <SighnedInLinks/> : <SighnedIOutLinks/>
+    const { auth, profile } = props;
+// console.log("check",profile.initials);
+    const links = auth.uid ? <SighnedInLinks profile={profile.initials} /> : <SighnedIOutLinks/>
 
     return( // materializecss 
         <>
@@ -39,9 +39,10 @@ const Navbar = (props) =>{
 }
 
 const mapStateToProps = (state) =>{
-    console.log(state);
+    // console.log(state);
     return{
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
