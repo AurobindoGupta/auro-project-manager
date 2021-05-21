@@ -15,15 +15,17 @@ const CreateProject = (props) => {
      
     
     const handleChange = (e) =>{
-       
-       setState({...state,[e.target.id]: e.target.value});
+        setState({...state,[e.target.id]: e.target.value});
+     
     }
     
      const handleSubmit = (e) =>{
          e.preventDefault();
         console.log(state);
+        if(state.title && state.content){
         props.createProject(state);
-        props.history.push('/');
+        props.history.push('/');}
+        else alert("empty")
     }
     const {auth} = props;
     if(!auth.uid) return <Redirect to='/signin' />
@@ -35,7 +37,7 @@ const CreateProject = (props) => {
                 <h5 className="grey-text text-darken-3">Create New Project</h5>
                 <div className="input-field">
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" onChange={handleChange} ></input>
+                    <input  type="text" id="title" onChange={handleChange}></input>
                 </div>
                 <div className="input-field">
                     <label htmlFor="content">Project Content</label>
