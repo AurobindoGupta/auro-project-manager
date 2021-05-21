@@ -1,0 +1,13 @@
+[debug] [2021-05-21T10:06:33.907Z] ----------------------------------------------------------------------
+[debug] [2021-05-21T10:06:33.909Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\savio\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-05-21T10:06:33.909Z] CLI Version:   9.11.0
+[debug] [2021-05-21T10:06:33.909Z] Platform:      win32
+[debug] [2021-05-21T10:06:33.909Z] Node Version:  v14.16.1
+[debug] [2021-05-21T10:06:33.914Z] Time:          Fri May 21 2021 15:36:33 GMT+0530 (India Standard Time)
+[debug] [2021-05-21T10:06:33.914Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-21T10:06:33.923Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-21T10:06:33.923Z] > authorizing via signed-in user (aurogpt10@gmail.com)
+[debug] [2021-05-21T10:06:33.923Z] [iam] checking project auro-project-manager for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-05-21T10:06:33.925Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/auro-project-manager:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
