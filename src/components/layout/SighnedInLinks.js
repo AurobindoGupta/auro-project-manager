@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import { signOut } from '../../store/actions/authActions';
 
 const SighnedInLinks = (props) =>{
-    console.log("check",props)
+    // console.log("check",props)
     return(
        <ul className="right">
            <li><NavLink to ='/create'>New Project</NavLink></li>
