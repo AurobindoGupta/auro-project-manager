@@ -2,11 +2,13 @@ export const createProject =(project) =>{//pausing dispatch to update project de
     return(dispatch, getState, getFirebase ) =>{
         //make a call to database
         const firestore = getFirebase().firestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         firestore.collection('projects').add({
             ...project,
-            authorFirstName: 'Auro',
-            authorLastName: 'Gupta',
-            authorID: '12345',
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName,
+            authorID: authorId,
             createdAt: new Date()
         }).then(() => {
             dispatch({type:'CREATE_PROJECT', project: project});
