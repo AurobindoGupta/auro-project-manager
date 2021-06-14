@@ -48,8 +48,8 @@ exports.projectDeleted = functions.firestore
 
   const project = doc.data();
   const notification = {
-    content: 'Deleted a New Project',
-    user: `${project.authorFirstName} ${project.authorLastName}`,
+    content: 'Deleted a Project!',
+    
     time: admin.firestore.FieldValue.serverTimestamp()
   }
 
